@@ -1,50 +1,44 @@
 Equipe: Gustavo Gustzaki, Renan, Nicolas, Ramon
 
 Projeto SUS Inteligente: Resposta Autônoma de Emergência
-Este projeto consiste em uma plataforma de gerenciamento centralizado para o Sistema Único de Saúde, projetada para coordenar o acionamento, triagem e transporte de pacientes críticos por meio de ambulâncias 1000% autônomas (sem tripulação humana a bordo). O ecossistema unifica inteligência artificial, dados clínicos e geoprocessamento em uma única interface operacional.
+Este projeto consiste em uma plataforma de gerenciamento centralizado para o Sistema Único de Saúde, o projeto tem inteção de diminuir as filas das UPAs ao otimizar as filas considerando o resto das UPAs da cidade do usuário. O ecossistema unifica inteligência artificial, dados clínicos e geoprocessamento em uma única interface operacional.
 
-Módulos Core do Sistema
-1. Interface de Conversação e Triagem Cognitiva (IA Acoplada)
-Atendimento Humanizado Automatizado: Um canal direto de comunicação via voz ou texto com o cidadão em momento de crise. A IA acalma o usuário, extrai o contexto clínico por meio de linguagem natural e descarta a necessidade de digitação em situações de pânico.
-Diagnóstico de Probabilidade: A IA analisa as respostas e o tom de voz para formular uma hipótese diagnóstica preliminar instantânea, traduzindo o relato do leigo em termos médicos técnicos para o sistema.
+Requisitos Funcionais 
 
-2. Formulário Unificado de Ocorrência do Paciente
-Dossiê Clínico Instantâneo: Consolida os dados capturados pela IA de triagem e os cruza imediatamente com o histórico médico universal do cidadão (alergias, comorbidades e cirurgias prévias).
-Ficha de Telemetria Inicial: Registra as coordenadas exatas do chamado (via GPS do celular do solicitante) e os dados vitais iniciais se o usuário possuir dispositivos vestíveis (wearables) conectados.
+1_ o sistema deve calcular quantos pacientes tem na UPA atual
+2_o sistema deve ser integrado ao google maps
+3_o sistema deve ter integração com uma IA
+4_o sistema precisa ter login e cadastro
+5_o sistema precisa ter integração com o gov
+6_o sistema precisa fazer calculos para otimizar rotas utilizando o google maps
+7_o sistema deve ser alinhado ao sistema do recepcionista
+8_o sistema deve avisar a outra UPA que o paciente POSSIVELMENTE está vindo
+9_o sistema deve classificar o problema do usuário para dar niveis de risco
+10_o sistema deve calcular o tempo de espera com base em seu risco, sua localização atual e o tempo da fila.
 
-3. Motor Dinâmico de Lista de Prioridade (Fila Inteligente)
-Classificação de Risco Automatizada: Aplicação em tempo real do Protocolo de Manchester (Emergência, Muito Urgente, Urgente, Pouco Urgente e Não Urgente).
-Fila Viva: A lista de espera de chamados se reordena automaticamente a cada segundo. Se um caso de dor torácica evoluir para parada cardiorrespiratória baseado nos dados capturados, ele assume o topo da fila instantaneamente, redefinindo as ordens de despacho das ambulâncias.
+Regras De Negócios
 
-4. Painel de Gestão Hospitalar e Alocação de Vagas
-Rede Hospitalar em Tempo Real: Monitoramento da capacidade operacional de pronto-socorros, salas de trauma e disponibilidade de leitos de UTI na região.
-Direcionamento Cirúrgico: O sistema seleciona o hospital de destino não apenas pela proximidade, mas pela especialidade médica ativa e infraestrutura livre (ex: direcionar um AVC diretamente para uma unidade com tomógrafo desocupado e neurologista de plantão).
+1_O sistema tem que ser justo
+2_O sistema tem que ser eficaz
+3_O sistema deve aumentar a estimativa de vida, ou melhorar o respeito do povo pelo sistema de UPAs
+4_O sistema deve ser acessivel
+5_O sistema tem que ser simples e compreensivel
 
-5. Módulo de Rastreamento e Telemetria (Mapa Atual da Ambulância)
-Gêmeo Digital da Frota: Um mapa cartográfico de alta precisão que exibe o deslocamento em tempo real do veículo autônomo pelas vias públicas.
-Painel de Controle de Bordo: Exibe informações críticas da ambulância sem motorista: velocidade, rota otimizada de emergência, previsão exata de chegada (ETA), nível de energia do veículo e status das travas de segurança biométricas para o embarque do paciente.
+Persona
 
-Fluxo de Funcionamento do Projeto[Paciente/Solicitante]
-       │
-       ▼
- 1. Chatbot de IA (Conversa, acalma e extrai sintomas)
-       │
-       ▼
- 2. Formulário de Ocorrência (Gera a ficha e cruza com histórico do SUS)
-       │
-       ▼
- 3. Lista de Prioridade (O algoritmo classifica o risco e ordena a fila de despacho)
-       │
-       ▼
- 4. Mapa & Despacho (Ambulância autônoma liga e ruteia a caminho do local)
-       │
-       ▼
- 5. Painel Hospitalar (Hospital ideal reserva o leito de UTI antes do veículo chega
+Nome:Sérgio Rodrigo da Silva
+idade:53 anos
+Problema:está com uma espera muito grande em sua UPA
 
-Como programar:
+Jornada Do Usuário
 
-1.IA acoplada - Utilizar python, API da OpenAI LangChain e a biblioteca Web Speech API
-2.Formulario de ocorrência - JavaScript e TypeScript, tecnologias e API de React.js ou Next.js (React Hook Form para gerenciar os campos.)
-3. Lista de Prioridade Dinâmica -  JavaScript e SQL, tecnologias e APIs: Node.js com framework Express ou Fastify; banco de dados PostgreSQL.
-4. Painel Hospitalar e Alocação de Vagas - SQL e JavaScript/TypeScript, tecnologias e APIs: Banco de dados PostgreSQL
-5. Mapa Atual da Ambulância - JavaScript (no Front-end e Back-end), tecnologias e APIs: React-Leaflet ou Google Maps API) e OSRM (Open Source Routing Machine) no servidor para calcular as ruas.
+1_ Tem um problema físico ou mental que necessite de ajuda médica que é fornecida pelo SUS
+2_ Vai a UPA mais proxima de seu lugar atual
+3_ Chega no lugar e vê uma fila enorme, sentindo insatisfação visto que talvez esteja em estado de urgencia
+4_ Sente a necessidade de ir para outra UPA
+5_ Abre o site
+6_ Se cadastra ou faz o login
+7_ Gera uma consulta do sistema considerando sua cidade, UPA atual e tempo de espera previsto considerando o quanto de pessoas estão no lugar
+8_ Adquire o resultado, vendo se compensa ou não mudar de UPA
+9_ sobre o julgamento do usuário, ele vai até uma UPA onde economize certo tempo e dinheiro
+10_ Problema do usuário satisfeito
